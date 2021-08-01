@@ -15,8 +15,8 @@ const Images = ({ images, loading }) => {
               </>
             ) : (
               <>
-                {images?.map(item => (
-                  <Image key={item.id} url={item?.url}></Image>
+                {images?.map((item, i) => (
+                  <Image key={`${item.id}_${i}`} url={item?.url}></Image>
                 ))}
               </>
             )}
