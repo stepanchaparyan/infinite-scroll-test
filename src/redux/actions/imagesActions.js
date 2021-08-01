@@ -23,8 +23,19 @@ export const getImages = (page = 1, categoryID = '', limit = 10) => async dispat
         error.response && error.response.data.message ? error.response.data.message : error.message
     });
   }
+};
 
-  // resetImages 
+export const resetImages = () => async dispatch => {
+  try {
+    dispatch({ type: actionTypes.RESET_IMAGES_REQUEST });
+    dispatch({ type: actionTypes.RESET_IMAGES_SUCCESS });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.RESET_IMAGES_FAIL,
+      payload:
+        error.response && error.response.data.message ? error.response.data.message : error.message
+    });
+  }
 };
 
 

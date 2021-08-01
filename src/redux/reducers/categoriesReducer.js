@@ -5,12 +5,14 @@ export const categoriesReducer = (state = { categoriesItems: [], loading: false 
         case actionTypes.GET_CATEGORIES_REQUEST:
         case actionTypes.GET_CATEGORIES_FAIL:
             return {
+                ...state,
                 loading: true,
                 error: payload
             };
 
         case actionTypes.GET_CATEGORIES_SUCCESS:
             return {
+                ...state,
                 categories: payload,
                 loading: false
             };

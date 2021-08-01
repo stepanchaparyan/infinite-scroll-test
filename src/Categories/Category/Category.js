@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Container, ButtonStyled } from './CategoryStyled';
-import { getImages } from '../../redux/actions/imagesActions';
+import { getImages, resetImages } from '../../redux/actions/imagesActions';
 
 const Category = ({ category, id }) => {
     const dispatch = useDispatch();
     const getNewImages = () => {
         localStorage.setItem('category', id);
+        dispatch(resetImages());
         dispatch(getImages(1, id));
     };
 

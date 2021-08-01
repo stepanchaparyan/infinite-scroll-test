@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCategories } from '../redux/actions/categoriesActions';
-import { getImages } from '../redux/actions/imagesActions';
+import { getImages, resetImages } from '../redux/actions/imagesActions';
 
 import Categories from '../Categories/Categories';
 import Images from '../Images/Images';
@@ -30,7 +30,7 @@ const Home = () => {
             setCurrentPage(prev => prev + 1);
             setFetching(false);
         }
-    }, [dispatch, fetching]);
+    }, [dispatch, fetching, images.length]);
 
     useEffect(() => {
         document.addEventListener('scroll', scrollHandler)
@@ -50,11 +50,11 @@ const Home = () => {
     };
 
     return (
-        <>
-            <Categories categories={categories} loading={categoriesLoading} getImages={getImages}/>
-            <Images images={images} loading={imagesLoading} ></Images>
-            <ButtonStyled onClick={getNewImages}>Load more</ButtonStyled>
-        </>
+      <>
+        <Categories categories={categories} loading={categoriesLoading} getImages={getImages} resetImages={resetImages} />
+        <Images images={images} loading={imagesLoading} ></Images>
+        <ButtonStyled onClick={getNewImages}>Load more</ButtonStyled>
+      </>
     );
 };
 
